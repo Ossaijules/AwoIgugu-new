@@ -1,17 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
-      fontFamily:{
+      fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
       },
       screens: {
-        'xs': '501px',
-        'lg-md': '1199px', // Custom size between `lg` and `xl`
+        xs: '501px',
+        'lg-md': '1199px',
       },
       container: {
         center: true,
@@ -21,12 +21,11 @@ export default {
         },
       },
       scale: {
-        '103': '1.03', 
+        '103': '1.03',
         '102': '1.02',
         '101': '1.01',
       },
     },
   },
   plugins: [],
-}
-
+};

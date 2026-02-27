@@ -7,7 +7,7 @@ import AboutUs from './AboutUs'
 
 const Home = () => {
   return (
-    <div className='overflow-x-hidden min-h-screen flex flex-col'>
+    <div className='overflow-x-hidden min-h-screen flex flex-col bg-[#faf8fb]'>
       <Navbar />
       <Hero />
       <FeaturedProducts />

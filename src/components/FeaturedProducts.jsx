@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Heart, ShoppingCart } from 'lucide-react';
 
@@ -170,30 +172,33 @@ const FeaturedProducts = () => {
   };
 
   return (
-    <section className="px-4 sm:px-20 py-8 bg-white">
+    <section className="px-4 sm:px-10 lg:px-16 py-16 bg-gradient-to-b from-[#faf8fb] to-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl leading-tight text-center font-normal mb-11 sm:mb-16">
-          Featured Products
-        </h2>
-        <div className="flex justify-center mb-8 space-x-2 sm:space-x-4 flex-wrap gap-2">
+        <div className="text-center mb-10 sm:mb-12">
+          <p className="text-xs uppercase tracking-[0.28em] text-gray-500 mb-3">Curated Drop</p>
+          <h2 className="text-4xl sm:text-5xl leading-[0.95] text-black">
+            Featured Products
+          </h2>
+        </div>
+        <div className="flex justify-center mb-8 sm:mb-10 space-x-2 sm:space-x-4 flex-wrap gap-2">
           {['Men', 'Women', 'Top', 'Pants', 'Dresses'].map((category) => (
             <button
               key={category}
-              className={`px-4 py-2 mb-2 rounded-full transition-colors 
+              className={`px-5 py-2.5 mb-2 rounded-full text-xs sm:text-sm tracking-wide uppercase transition-colors 
                 ${activeCategory === category 
-                  ? 'bg-[#58005F] text-white' 
-                  : 'bg-[#fbe7fc] text-gray-800 hover:bg-[#f0ccf2] hover:text-black'}
+                  ? 'bg-black text-white' 
+                  : 'bg-white text-gray-700 border border-gray-200 hover:border-black hover:text-black'}
               `}
               onClick={() => setActiveCategory(category)}
             >
-              {category}
+            {category}
             </button>
           ))}
         </div>
         
         <div 
           ref={scrollContainerRef}
-          className="flex overflow-x-auto hide-scrollbar scroll-smooth"
+          className="flex overflow-x-auto hide-scrollbar scroll-smooth -mx-2 sm:mx-0"
           onScroll={handleScroll}
           style={{
             scrollBehavior: 'auto',
@@ -203,13 +208,13 @@ const FeaturedProducts = () => {
           {filteredProducts.map((product, index) => (
             <div
               key={product.id}
-              className={`${isMobile ? 'w-1/2' : 'w-1/4'} flex-shrink-0 px-2 mb-4`}
+              className={`${isMobile ? 'w-[68%]' : 'w-1/4'} flex-shrink-0 px-2 mb-4`}
               onMouseEnter={() => !isMobile && setIsHovering(index)}
               onMouseLeave={() => !isMobile && setIsHovering(null)}
             >
-              <div className="group relative overflow-hidden rounded-lg border border-gray-100">
+              <div className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_14px_35px_rgba(17,17,17,0.06)]">
                 <div className="relative overflow-hidden">
-                  <div className="overflow-hidden rounded-t-lg">
+                  <div className="overflow-hidden rounded-t-2xl">
                     <img
                       src={product.image}
                       alt={product.name}
@@ -219,23 +224,23 @@ const FeaturedProducts = () => {
                         : 'scale-100'}`}
                     />
                   </div>
-                  <div className="absolute top-2 right-2 flex space-x-1">
-                    <button className="bg-white/80 p-1.5 rounded-full hover:bg-white hover:shadow-md transition">
-                      <Heart className="text-[#58005F] w-4 h-4" />
+                  <div className="absolute top-3 right-3 flex space-x-2">
+                    <button className="bg-white/90 p-2 rounded-full hover:bg-white hover:shadow-md transition">
+                      <Heart className="text-black w-4 h-4" />
                     </button>
-                    <button className="bg-white/80 p-1.5 rounded-full hover:bg-white hover:shadow-md transition">
-                      <ShoppingCart className="text-[#58005F] w-4 h-4" />
+                    <button className="bg-white/90 p-2 rounded-full hover:bg-white hover:shadow-md transition">
+                      <ShoppingCart className="text-black w-4 h-4" />
                     </button>
                   </div>
                 </div>
               </div>
-              <div className="p-2 sm:p-3 bg-white border-x border-b border-gray-100 rounded-b-lg">
-                <h3 className="text-sm sm:text-base font-semibold text-gray-800 truncate">
+              <div className="p-3 sm:p-4 bg-white border-x border-b border-gray-100 rounded-b-2xl">
+                <h3 className="text-sm sm:text-base font-medium text-gray-900 truncate">
                   {product.name}
                 </h3>
-                <div className="flex justify-between items-center mt-1">
-                  <span className="text-xs sm:text-sm text-gray-600 truncate">{activeCategory}</span>
-                  <span className="font-bold text-sm sm:text-base text-[#58005F]">
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-[11px] sm:text-xs uppercase tracking-wider text-gray-500 truncate">{activeCategory}</span>
+                  <span className="font-semibold text-sm sm:text-base text-black">
                     ${product.price.toFixed(2)}
                   </span>
                 </div>
@@ -246,9 +251,9 @@ const FeaturedProducts = () => {
 
         {isMobile && (
           <div className="flex justify-center mt-6">
-            <div className="w-24 h-0.5 bg-gray-200">
+            <div className="w-24 h-1 rounded-full bg-gray-200">
               <div 
-                className="h-full bg-black"
+                className="h-full rounded-full bg-black"
                 style={{ 
                   width: `${scrollProgress}%`,
                   transition: 'none'
@@ -259,8 +264,8 @@ const FeaturedProducts = () => {
         )}
 
         <div className="flex justify-center text-center mt-10">
-          <a href="/Collection">
-          <button className="px-8 py-3 bg-[#58005F] text-white rounded-full hover:bg-[#59005fc8] transition duration-300">
+          <a href="/collection">
+          <button className="px-8 py-3 bg-black text-white text-sm tracking-wide uppercase rounded-full hover:bg-[#1f1f1f] transition duration-300">
             View All Collection
           </button>
           </a>

@@ -1,6 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import Logo from '../assets/Logo.svg'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,20 +28,20 @@ const Navbar = () => {
 
   const navigationItems = [
     { name: 'Home', href: '/' },
-    { name: 'Collection', href: '/Collection' },
+    { name: 'Collection', href: '/collection' },
   ];
 
   return (
     <nav 
-      className={`fixed w-full bg-white transition-transform duration-300 z-50 ${
+      className={`fixed top-0 w-full transition-transform duration-300 z-50 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div className="flex justify-between items-center h-16 rounded-full border border-white/50 bg-white/75 backdrop-blur-xl px-6 shadow-[0_8px_30px_rgba(17,17,17,0.08)]">
           {/* Brand logo */}
           <a href="/">
-            <img src={Logo} alt="Logo" className='w-32 hover:cursor-pointer' />
+            <img src="/images/Logo2.svg" alt="Logo" className='w-28 sm:w-32 hover:cursor-pointer' />
           </a>
 
           {/* Desktop navigation */}
@@ -49,7 +50,7 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-800 hover:text-[#58005F] hover:scale-105 transition-all duration-200"
+                className="text-sm tracking-wide uppercase text-gray-700 hover:text-black transition-colors duration-200"
               >
                 {item.name}
               </a>
@@ -58,13 +59,13 @@ const Navbar = () => {
 
           {/* Hamburger menu button */}
           <button 
-            className="lg:hidden hover:opacity-70 transition-opacity"
+            className="lg:hidden rounded-full bg-black text-white p-2.5 hover:opacity-80 transition-opacity"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             )}
           </button>
         </div>
@@ -72,13 +73,13 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+        <div className="lg:hidden px-4 sm:px-6 lg:px-8 -mt-1">
+          <div className="rounded-3xl border border-white/50 bg-white/90 backdrop-blur-xl px-3 py-4 space-y-1 shadow-[0_14px_40px_rgba(17,17,17,0.12)]">
             {navigationItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2.5 text-base font-medium text-gray-700 hover:text-black hover:pl-4 hover:scale-105 transition-all duration-200"
+                className="block px-4 py-3 text-sm font-medium tracking-wide uppercase text-gray-700 hover:text-black transition-colors duration-200"
               >
                 {item.name}
               </a>
