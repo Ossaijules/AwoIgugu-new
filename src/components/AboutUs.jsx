@@ -1,5 +1,3 @@
-import React from 'react';
-
 const AboutUs = () => {
   return (
     <section className="px-4 sm:px-10 lg:px-16 py-16 sm:py-20 bg-white relative overflow-hidden">

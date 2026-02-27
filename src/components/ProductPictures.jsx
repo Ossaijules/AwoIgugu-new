@@ -1,7 +1,6 @@
 'use client';
 
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Heart, ShoppingCart, Filter } from 'lucide-react';
 import { extendedProductData } from './ProductData.js'; // Updated import
 
